@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli("db", "root", "example");
+$mysqli = new mysqli("db", "root", "example", "company");
 
 if( $mysqli -> connect_errno ) {
     $mysql_version = "Failed to connect to MySQL: " . $mysqli->connect_error;
