@@ -2,15 +2,15 @@ version: '3.9'
 
 services:
 
-     # mysql
-     db:
-        container_name: mysql
+    # mysql
+    db:
+        container_name: db
         build: ./mysql
         command: --default-authentication-plugin=mysql_native_password
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: example
-            MYSQL_DATABASE: company
+            MYSQL_DATABASE: testdb
 
     # php
     php:
@@ -21,7 +21,7 @@ services:
         volumes:
             - ./php/src:/var/www/html
         depends_on:
-            - db
+            - db   
     
     # adminer
     adminer:
@@ -31,8 +31,11 @@ services:
         ports:
             - 8080:8080 #host_machine:docker
 
+    # phpmyadmin
     phpmyadmin:
         image: phpmyadmin
         restart: always
         ports:
             - 8081:80 #host_machine:docker
+
+    
